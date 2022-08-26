@@ -34,7 +34,7 @@
 
 let pizza = {
     name: 'Meat lovers',
-    price: '10$',
+    price: 10,
     category: '3 toppings',
     popularity: 4,
     rating: 5,
@@ -53,7 +53,6 @@ let pizza = {
 //CODE HERE
 
 // console.log(pizza.popularity)
-
 
 /*
     Second, log the second tag in your pizza's
@@ -74,8 +73,9 @@ let pizza = {
 */
 
 //CODE HERE
-let {price: threeMeatPrice} = pizza
-// console.log(threeMeatPrice)
+
+let {price} = pizza
+// console.log(price)
 
 /*
     Fourth, and last, destructure the category
@@ -86,8 +86,8 @@ let {price: threeMeatPrice} = pizza
 
 //CODE HERE
 
-let{category: threeTopping} = pizza
-// console.log(threeTopping)
+let{category} = pizza
+// console.log(category)
 
 //////////////////PROBLEM 3////////////////////
 /* 
@@ -106,15 +106,15 @@ let{category: threeTopping} = pizza
 let foodArr = [ 
     {
         name: 'Meat lovers' ,
-        price: '8$',
+        price: 8,
         category: '3 toppings',
         popularity: 5,
         rating: 4,
-        tags: ['Pepperoni', 'Bacon', 'Sausage']
+        tags: ['Pepperoni', 'Bacon', 'Sausage', 'Tomato Sauce']
     },
     {
         name: 'Pepperoni' ,
-        price: '5$',
+        price: 5,
         category: '1 toppings',
         popularity: 5,
         rating: 5,
@@ -122,7 +122,7 @@ let foodArr = [
     },
     {
         name: 'Cheese',
-        price: '5$',
+        price: 5,
         category: '0 toppings',
         popularity: 3,
         rating: 4,
@@ -130,7 +130,7 @@ let foodArr = [
     },
     {
         name: 'BBQ Chicken' ,
-        price: '12$',
+        price: 12,
         category: '2 toppings',
         popularity: 3,
         rating: 5,
@@ -138,7 +138,7 @@ let foodArr = [
     },
     {
         name: 'Veggie Pizza' ,
-        price: '10$',
+        price: 10,
         category: '3 toppings',
         popularity: 1,
         rating: 3,
@@ -159,7 +159,16 @@ let foodArr = [
 */
 
 //CODE HERE
-const result = foodArr.filter(foodArr => foodArr.tags.includes("Tomato Sauce") === true) 
+
+// const filteredFood = foodArr.filter((food) => {
+//     if(food.tags.includes('Tomato Sauce')){
+//         return food
+//     }
+// })
+
+// console.log(filteredFood)
+
+const result = foodArr.filter(foodArr => foodArr.tags.includes("Tomato Sauce")) 
 
 // console.log(result)
 
@@ -204,15 +213,17 @@ const result = foodArr.filter(foodArr => foodArr.tags.includes("Tomato Sauce") =
 
 //CODE HERE
 
-let filteredArray = []
-let arrFilter = []
-const filterByProperty = (cost) => {
-    return foodArr.filter((element, cost) => 
-    arrFilter.push(element.price[0] <= cost)       
-)
-    console.log(arrFilter)
+const filterByProperty = (property, number, type) => {
+    const filteredFood = foodArr.filter((food) => {
+        if(type === 'above'){
+            return food[property] >= number
+        }else{
+            return food[property] <= number
+        }
+    })
+
+    return filteredFood
 }
-    
 
 
 
@@ -226,5 +237,4 @@ const filterByProperty = (cost) => {
 
 //CODE HERE
 
-filterByProperty(8)
-console.log(filteredArray)
+console.log(filterByProperty('price', 7, 'below'))
